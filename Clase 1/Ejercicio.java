@@ -14,7 +14,7 @@ public class Ejercicio {
             }
             
             if (i % 2 == 0) {
-                System.out.println("Posición par: " + a[i] + " numero en la posición " + i);
+                System.out.println("Numero " + a[i] + " En la posicion: " + i);
             }
 
             System.out.println("a[" + i + "]=" + a[i]);
