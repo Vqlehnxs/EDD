@@ -12,3 +12,4 @@ public class Ejemplo {
         }
     }
 }
+// obtener la suma de numero pares e impares, mostrar los elementos de posiciones pares
