@@ -23,7 +23,8 @@ public class SistemaPortuario {
             System.out.println("2. Registrar Contenedor");
             System.out.println("3. Mostrar peso total de los contenedores");
             System.out.println("4. Contenedores por pais de origen");
-            System.out.println("5. Salir");
+            System.out.println("5. Lista de Buques");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opcion: ");
             opcion = sc.nextInt();
             sc.nextLine();
@@ -42,12 +43,15 @@ public class SistemaPortuario {
                     listarPorOrigen();
                     break;
                 case 5:
+                    listarBuques();
+                    break;
+                case 6:
                     System.out.println("Cerrando sistema...");
                     break;
                 default:
                     System.out.println("Opcion no valida");
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
     }
 
     static void iniciarMatriz() {
@@ -290,6 +294,18 @@ public class SistemaPortuario {
                     System.out.println("  " + contenedores[j]);
                 }
             }
+        }
+    }
+
+    static void listarBuques(){
+        if (cantidadBuques == 0){
+            System.out.println("No hay buques registrados");
+            return;
+        }
+        
+        System.out.println("\nBuques registrados");
+        for(int i = 0; i < cantidadBuques; i++){
+            System.out.println("ID: " + buques[i].getId() + " | Nombre: " + buques[i].getNombre() + " | Pais: " + buques[i].getPaisOrigen() + " | Capacidad: " + buques[i].getCapacidad() + " contenedores");
         }
     }
 }
