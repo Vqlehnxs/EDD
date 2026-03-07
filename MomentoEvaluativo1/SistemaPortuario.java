@@ -13,6 +13,34 @@ public class SistemaPortuario {
 
     static Scanner sc = new Scanner(System.in);
 
+    static int leerEntero(String mensaje) {
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                int valor = sc.nextInt();
+                sc.nextLine();
+                return valor;
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Error: ingrese solo numeros.");
+            }
+        }
+    }
+
+    static double leerDecimal(String mensaje) {
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                double valor = sc.nextDouble();
+                sc.nextLine();
+                return valor;
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Error, ingrese solo numeros.");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         iniciarMatriz();
         generarDatosAleatorios();
@@ -25,9 +53,7 @@ public class SistemaPortuario {
             System.out.println("4. Contenedores por pais de origen");
             System.out.println("5. Lista de Buques");
             System.out.println("6. Salir");
-            System.out.print("Seleccione una opcion: ");
-            opcion = sc.nextInt();
-            sc.nextLine();
+            opcion = leerEntero("Seleccione una opcion: ");
 
             switch (opcion) {
                 case 1:
@@ -110,9 +136,7 @@ public class SistemaPortuario {
         }
 
         System.out.println("Puestos disponibles: " + (10 - cantidadBuques));
-        System.out.print("ID del buque: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+        int id = leerEntero("ID del buque: ");
 
         for (int i = 0; i < cantidadBuques; i++) {
             if (buques[i].getId() == id) {
@@ -125,9 +149,7 @@ public class SistemaPortuario {
         String nombre = sc.nextLine();
         System.out.print("Pais de origen: ");
         String pais = sc.nextLine();
-        System.out.print("Capacidad (numero de contenedores): ");
-        int capacidad = sc.nextInt();
-        sc.nextLine();
+        int capacidad = leerEntero("Capacidad (numero de contenedores): ");
 
         buques[cantidadBuques] = new Buque(id, nombre, pais, capacidad);
         cantidadBuques++;
@@ -154,18 +176,15 @@ public class SistemaPortuario {
             }
         }
 
-        System.out.print("Peso (kg): ");
-        double peso = sc.nextDouble();
-        sc.nextLine();
+        double peso = leerDecimal("Peso (kg): ");
+
         if (peso < 20 || peso > 100) {
             System.out.println("El peso debe estar entre 20 y 100 kg");
             return;
         }
         System.out.print("Pais de origen: ");
         String pais = sc.nextLine();
-        System.out.print("ID del buque al que pertenece: ");
-        int idBuque = sc.nextInt();
-        sc.nextLine();
+        int idBuque = leerEntero("ID del buque al que pertenece: ");
 
         boolean buqueExiste = false;
         for (int i = 0; i < cantidadBuques; i++) {
@@ -199,9 +218,7 @@ public class SistemaPortuario {
             return;
         }
 
-        System.out.print("Columna donde desea colocar el contenedor (0-9): ");
-        int col = sc.nextInt();
-        sc.nextLine();
+        int col = leerEntero("Columna donde desea colocar el contenedor (0-9): ");
 
         if (col < 0 || col > 9) {
             System.out.println("Columna invalida.");
@@ -297,15 +314,16 @@ public class SistemaPortuario {
         }
     }
 
-    static void listarBuques(){
-        if (cantidadBuques == 0){
+    static void listarBuques() {
+        if (cantidadBuques == 0) {
             System.out.println("No hay buques registrados");
             return;
         }
-        
+
         System.out.println("\nBuques registrados");
-        for(int i = 0; i < cantidadBuques; i++){
-            System.out.println("ID: " + buques[i].getId() + " | Nombre: " + buques[i].getNombre() + " | Pais: " + buques[i].getPaisOrigen() + " | Capacidad: " + buques[i].getCapacidad() + " contenedores");
+        for (int i = 0; i < cantidadBuques; i++) {
+            System.out.println("ID: " + buques[i].getId() + " | Nombre: " + buques[i].getNombre() + " | Pais: "
+                    + buques[i].getPaisOrigen() + " | Capacidad: " + buques[i].getCapacidad() + " contenedores");
         }
     }
 }
