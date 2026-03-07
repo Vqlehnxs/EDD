@@ -174,6 +174,26 @@ public class SistemaPortuario {
             System.out.println("El buque con ID " + idBuque + " no existe.");
             return;
         }
+        int contadorBuque = 0;
+        for (int i = 0; i < cantidadContenedores; i++) {
+            if (contenedores[i].getIdBuque() == idBuque) {
+                contadorBuque++;
+            }
+        }
+
+        int capacidadBuque = 0;
+        for (int i = 0; i < cantidadBuques; i++) {
+            if (buques[i].getId() == idBuque) {
+                capacidadBuque = buques[i].getCapacidad();
+                break;
+            }
+        }
+
+        if (contadorBuque >= capacidadBuque) {
+            System.out.println(
+                    "El buque " + idBuque + " ya alcanzo su capacidad maxima de " + capacidadBuque + " contenedores.");
+            return;
+        }
 
         System.out.print("Columna donde desea colocar el contenedor (0-9): ");
         int col = sc.nextInt();
