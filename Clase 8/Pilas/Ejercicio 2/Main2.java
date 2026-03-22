@@ -13,7 +13,7 @@ public class Main2{
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("=======================================================");
-        System.out.println("  MANEJO DE 5 PILAS (P1, P2, P3, P4, P5)");
+        System.out.println("  Manejo de 5 pilas (P1, P2, P3, P4, P5)");
         System.out.println("=======================================================");
         System.out.println("  Ingrese dos numeros en cada turno:");
         System.out.println("  - i positivo: inserta j en la pila Pi");
