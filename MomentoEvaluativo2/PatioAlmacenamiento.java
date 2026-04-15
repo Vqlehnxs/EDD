@@ -14,7 +14,7 @@ public class PatioAlmacenamiento {
             for(int j = 0; j < columnas; j++){
                 if(patio[i][j] == null){
                     patio[i][j] = c;
-                    System.out.printf(" %s → celda (%d,%d)%n\", c.id, i, j");
+                    System.out.printf(" %s → celda (%d,%d)%n", c.id, i, j);
                     return new int[]{i,j};
                 }
             }
