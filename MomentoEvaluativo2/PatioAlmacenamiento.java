@@ -35,6 +35,6 @@ public class PatioAlmacenamiento {
             }
             System.out.println("|");
         }
-        System.out.println("\"--------------------------------------\n");
+        System.out.println("--------------------------------------\n");
     }
 }
