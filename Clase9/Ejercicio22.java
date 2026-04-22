@@ -23,8 +23,8 @@ public class Ejercicio22 {
         System.out.println("Llave 101 sobreescrita con " + almacen.get(101));
 
         System.out.println("\nInventario:");
-        for(HashMap.Entry<Integer, String> entry : almacen.entrySet()){
-            System.out.println("Codigo: " + entry.getKey() + " -> Producto: " + entry.getValue());
-        }
+        almacen.forEach((key, value) -> {
+            System.out.println("Código: [" + key + "] -> Producto: [" + value + "]");
+        });
     }
 }
