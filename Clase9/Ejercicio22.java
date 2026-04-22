@@ -16,7 +16,7 @@ public class Ejercicio22 {
         almacen.put(102, "Mouse");
         almacen.put(103, "Teclado");
 
-        System.out.println("Existe la llave 102?" + almacen.containsKey(102));
+        System.out.println("Existe la llave 102? " + almacen.containsKey(102));
 
         almacen.put(101, "Monitor");
 
