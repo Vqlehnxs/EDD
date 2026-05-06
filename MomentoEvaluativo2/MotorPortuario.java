@@ -20,7 +20,10 @@ public class MotorPortuario {
         PatioAlmacenamiento patio = new PatioAlmacenamiento(3, 3);
         try{
             for(Contenedor c: manifiesto.getContenedores()){
-                patio.ubicar(c);
+                int[] ubicacion = patio.ubicar(c);
+                int fila = ubicacion[0];
+                int columna = ubicacion[1];
+                System.out.printf("[!] %s asignado al Pasillo %d, Nivel %d%n", c.id, fila, columna);
             }
         } catch(IllegalStateException e){
             System.out.println(e.getMessage());
