@@ -68,7 +68,10 @@ public class Materia {
     }
 
     /*Inscribe un estudiante directamente (si ya se verificaron los pre requisitos antes) */
-    public void inscribirEstudiante(String idEstudiante){
+    public void inscribirEstudiante(String idEstudiante) throws CupoLlenoExpcetion{
+        if(!hayCupo()){
+            throw new CupoLlenoExpcetion("CupoLlenoException - La materia " + codigo + " no tiene cupos disponibels");
+        }
         estudiantesInscritos.add(idEstudiante);
         cuposOcupados++;
     }

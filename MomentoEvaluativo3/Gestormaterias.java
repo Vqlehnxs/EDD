@@ -68,10 +68,13 @@ public class Gestormaterias {
             return;
         }
 
-        if(materia.hayCupo()){
-            System.out.println("Inscripcion exitosa: " + idEstudiante + " en " + codigoMateria);
-        } else{
-            System.out.println("Materia llena. " + idEstudiante + " agrendando a COLA DE ESPERA de " + codigoMateria);
+        try{
+            materia.inscribirEstudiante(idEstudiante);
+            System.out.println("Inscripcion existosa: " + idEstudiante + " en " + codigoMateria);
+        } catch(CupoLlenoExpcetion e){
+            System.out.println(e.getMessage());
+            materia.agregarAColaEspera(idEstudiante);
+            System.out.println("Materia llena " + idEstudiante + " agregado a cola de espera de " + codigoMateria);
         }
     }
 
@@ -93,7 +96,7 @@ public class Gestormaterias {
         return siguiente;
     }
 
-    public void mostrarColaEspera(String codigoMateria){
+    public void mostrarColaEspera(String codigoMateria) throws ColaDeEsperaVaciaException{
         Materia m = materias.get(codigoMateria);
         if(m == null){
             System.out.println("Materia no encontrada");
@@ -107,6 +110,9 @@ public class Gestormaterias {
         if(m.getColaEspera().isEmpty()){
             System.out.println("Cola de espera vacia.");
             return;
+        }
+        if(m.getColaEspera().isEmpty()){
+            throw new ColaDeEsperaVaciaException("ColaDeEsperaException - Cola de espera vacia para esta materia");
         }
         int pos = 1;
         for(String id : m.getColaEspera()){
