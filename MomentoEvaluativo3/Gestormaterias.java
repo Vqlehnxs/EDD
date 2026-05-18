@@ -4,10 +4,18 @@ public class Gestormaterias {
     //HashMap para buscar materias rapido por codigo
     private HashMap<String, Materia> materias;
     private Gestorestudiantes gestorEstudiantes;
+    //Referencia al gestor de profesores, para mostrar al docente al inscribir
+    private Gestorprofesores gestorProfesores;
 
     public Gestormaterias(Gestorestudiantes gestorEstudiantes) {
         this.materias = new HashMap<>();
         this.gestorEstudiantes = gestorEstudiantes;
+        this.gestorProfesores = null; //Se inyecta despues con el set
+    }
+
+    //Permite inyectar el gestor despues del constructor, lo que evita la dependencia circular en el constructor
+    public void setGestorprofesores(Gestorprofesores gestorprofesores){
+        this.gestorProfesores = gestorProfesores;
     }
 
     public void crearMateria(String codigo, String nombre, int cuposMaximos, int creditos){
@@ -71,6 +79,16 @@ public class Gestormaterias {
         try{
             materia.inscribirEstudiante(idEstudiante);
             System.out.println("Inscripcion existosa: " + idEstudiante + " en " + codigoMateria);
+            //mostrar info del docente asignado
+            if(gestorProfesores != null){
+                Profesor prof = gestorProfesores.getProfesorDeMateria(codigoMateria);
+                if(prof != null){
+                    System.out.println("Materia: " + materia.getNombre());
+                    System.out.println("Docente: " + prof.getNombre() + " | " + prof.getTelefono());
+                } else{
+                    System.out.println("Docente: (sin asignar)");
+                }
+            }
         } catch(CupoLlenoExpcetion e){
             System.out.println(e.getMessage());
             materia.agregarAColaEspera(idEstudiante);

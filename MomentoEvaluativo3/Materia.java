@@ -13,6 +13,8 @@ public class Materia {
     private LinkedList<String> estudiantesInscritos;
     //Cola de espera
     private Queue<String> colaEspera;
+    //Id del profesor asignado a esta materia
+    private String idProfesor;
 
     public Materia(String codigo, String nombre, int cuposMaximos, int creditos) {
         this.codigo = codigo;
@@ -23,6 +25,7 @@ public class Materia {
         this.preRequisitos = new LinkedList<>();
         this.estudiantesInscritos = new LinkedList<>();
         this.colaEspera = new LinkedList<>();
+        this.idProfesor = null;
     }
 
     public String getCodigo() {
@@ -106,6 +109,16 @@ public class Materia {
     public String toString() {
         return codigo + " - " + nombre + " (Cupos: " + cuposOcupados + "/" + cuposMaximos + ")";
     }
+
+    public String getIdProfesor() {
+        return idProfesor;
+    }
+
+    public void setIdProfesor(String idProfesor) {
+        this.idProfesor = idProfesor;
+    }
+
+    
 
     
 }
