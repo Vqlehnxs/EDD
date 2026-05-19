@@ -194,10 +194,7 @@ public class Main {
             Estudiante eliminado = gestorEstudiantes.eliminarEstudiante(id);
             System.out.println("Estudiante eliminado: " + eliminado.getNombre());
             // Registrar para deshacer
-            gestorDR.registrarOperacion(new Operacion(
-                    "ELIMINAR_ESTUDIANTE",
-                    "Eliminar estudiante " + eliminado.getId(),
-                    eliminado));
+            gestorDR.registrarOperacion(new Operacion("ELIMINAR_ESTUDIANTE", "Eliminar estudiante " + eliminado.getId(), eliminado));
         } catch (EstudianteNoEncontradoException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -238,10 +235,7 @@ public class Main {
         try {
             gestorMaterias.inscribirEstudiante(id, cod);
             // Registrar para deshacer
-            gestorDR.registrarOperacion(new Operacion(
-                    "INSCRIPCION",
-                    "Inscribir " + id + " en " + cod,
-                    new String[] { id, cod }));
+            gestorDR.registrarOperacion(new Operacion("INSCRIPCION","Inscribir " + id + " en " + cod, new String[] { id, cod }));
         } catch (PreRequisitoNoAprobadoException | EstudianteNoEncontradoException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -254,10 +248,7 @@ public class Main {
         System.out.print("Codigo de la materia: ");
         String cod = sc.nextLine().trim();
         gestorMaterias.cancelarInscripcion(id, cod);
-        gestorDR.registrarOperacion(new Operacion(
-                "CANCELACION",
-                "Cancelar inscripcion de " + id + " en " + cod,
-                new String[] { id, cod }));
+        gestorDR.registrarOperacion(new Operacion("CANCELACION","Cancelar inscripcion de " + id + " en " + cod, new String[] { id, cod }));
     }
 
     private static void opcion10_MostrarColaEspera() {
@@ -367,10 +358,7 @@ public class Main {
         double nota = leerDouble("Nota (0.0 - 5.0): ");
         try {
             gestorReportes.registrarNota(id, semestre, cod, nota);
-            gestorDR.registrarOperacion(new Operacion(
-                    "NOTA",
-                    "Registrar nota " + nota + " en " + cod + " para " + id,
-                    new Object[] { id, semestre, cod, nota }));
+            gestorDR.registrarOperacion(new Operacion("NOTA","Registrar nota " + nota + " en " + cod + " para " + id, new Object[] { id, semestre, cod, nota }));
         } catch (EstudianteNoEncontradoException e) {
             System.out.println("Error: " + e.getMessage());
         }
