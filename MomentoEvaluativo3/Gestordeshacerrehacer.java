@@ -11,10 +11,12 @@ public class Gestordeshacerrehacer {
     private Stack<Operacion> pilaRehacer;
     private Gestorestudiantes gestorEstudiantes;
     private Gestormaterias gestorMaterias;
+    private Gestorhorarios gestorHorarios;
 
-    public Gestordeshacerrehacer(Gestorestudiantes gestorEstudiantes, Gestormaterias gestorMaterias) {
+    public Gestordeshacerrehacer(Gestorestudiantes gestorEstudiantes, Gestormaterias gestorMaterias, Gestorhorarios gestorHorarios) {
         this.gestorEstudiantes = gestorEstudiantes;
         this.gestorMaterias = gestorMaterias;
+        this.gestorHorarios = gestorHorarios;
         this.pilaDeshacer = new Stack<>();
         this.pilaRehacer = new Stack<>();
     }

@@ -124,8 +124,8 @@ public class Gestorrutas {
         }
     }
 
-    public String[] getNombreEdificios() {
-        return nombreEdificios;
+    public String getNombreEdificios(int idx) {
+        return nombreEdificios[idx];
     }
 
     public int getTotalEdificios() {

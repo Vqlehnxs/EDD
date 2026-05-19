@@ -126,10 +126,6 @@ public class Gestormaterias {
         System.out.println("Cupos totales: " + m.getCuposMaximos());
         
         if(m.getColaEspera().isEmpty()){
-            System.out.println("Cola de espera vacia.");
-            return;
-        }
-        if(m.getColaEspera().isEmpty()){
             throw new ColaDeEsperaVaciaException("ColaDeEsperaException - Cola de espera vacia para esta materia");
         }
         int pos = 1;

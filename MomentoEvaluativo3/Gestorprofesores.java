@@ -11,7 +11,7 @@ public class Gestorprofesores {
     }
 
     // Metodo para registrar un profesor en el sistema
-    public void regisrarProfesor(String nombre, String id, String email, String telefono) {
+    public void registrarProfesor(String nombre, String id, String email, String telefono) {
         Profesor p = new Profesor(nombre, id, email, telefono, telefono);
         profesores.put(id, p);
         System.out.println("Profesor registrado: " + nombre + " (ID: " + id + ")");
